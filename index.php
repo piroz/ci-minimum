@@ -18,7 +18,8 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	require_once 'application/include/include.php';
+	defineEnvironment();
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -33,10 +34,11 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
-			error_reporting(E_ALL);
+			error_reporting(E_ALL & ~E_DEPRECATED);
+			ini_set('display_error', 1);
 		break;
 
-		case 'testing':
+		case 'staging':
 		case 'production':
 			error_reporting(0);
 		break;
@@ -45,6 +47,9 @@ if (defined('ENVIRONMENT'))
 			exit('The application environment is not set correctly.');
 	}
 }
+
+ini_set('log_errors', 1);
+ini_set('error_log', 'application/logs/php_error-' . date('Ymd') . '.log');
 
 /*
  *---------------------------------------------------------------
