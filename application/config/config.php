@@ -16,7 +16,18 @@
 | environments.
 |
 */
-$config['base_url'] = '';
+//$config['base_url'] = '';
+switch(ENVIRONMENT) {
+	case 'production':
+		$config['base_url'] = 'xx.xx.xx.xx'; // @change-me
+		break;
+	case 'staging':
+		$config['base_url'] = 'xx.xx.xx.xx'; // @change-me
+		break;
+	default:
+		$config['base_url'] = "http://{$_SERVER['HTTP_HOST']}/";
+		break;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +39,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +70,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '';
+$config['url_suffix'] = '.html';
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +82,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'japanese';
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +104,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = true;
 
 
 /*
@@ -182,7 +193,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = (ENVIRONMENT === 'development') ? 4 : 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -226,7 +237,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '11111111111111111111111111111111111'; // @change-me
 
 /*
 |--------------------------------------------------------------------------
@@ -246,10 +257,10 @@ $config['encryption_key'] = '';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
+$config['sess_cookie_name']		= 'sc'; // @change-me
 $config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
+$config['sess_expire_on_close']	= true;
+$config['sess_encrypt_cookie']	= true;
 $config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
@@ -269,7 +280,7 @@ $config['sess_time_to_update']	= 300;
 */
 $config['cookie_prefix']	= "";
 $config['cookie_domain']	= "";
-$config['cookie_path']		= "/";
+$config['cookie_path']		= "/"; // @change-me
 $config['cookie_secure']	= FALSE;
 
 /*
@@ -295,10 +306,10 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 */
-$config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
-$config['csrf_expire'] = 7200;
+$config['csrf_protection'] = true;
+$config['csrf_token_name'] = 'tk';  // @change-me
+$config['csrf_cookie_name'] = 'tc'; // @change-me
+$config['csrf_expire'] = 600;       // @change-me
 
 /*
 |--------------------------------------------------------------------------
