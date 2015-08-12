@@ -1,0 +1,1 @@
+<html><head><meta charset="UTF-8"></head><body><?php echo form_open($action, 'id=redirect', $vars)?><?php echo form_close()?><script type="text/javascript">document.getElementById('redirect').submit()</script></body></html>
