@@ -21,6 +21,18 @@ class Welcome extends MY_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+    
+    /**
+     * dbテーブル表示用のテストメソッド
+     */
+    public function list_db()
+    {
+        $this->load->database(ENVIRONMENT);
+        
+        pd($this->db->list_tables());
+        
+        $this->db->close();
+    }
 }
 
 /* End of file welcome.php */
