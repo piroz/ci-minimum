@@ -40,23 +40,13 @@ class MY_Controller extends CI_Controller
      */
     protected function loadView(array $data = array(), $template = null)
     {
-        $this->load->library('user_agent');
-
-        $tplPrefix = '';
-
-        if ($this->agent->is_mobile()) {
-            $tplPrefix = 'sp/';
-        }
-
         if ($template === null) {
             $class = $this->router->fetch_class();
             $method = $this->router->fetch_method();
             $template = "{$class}/{$method}";
         }
 
-        $target = $tplPrefix . $template;
-
-        $this->load->view($target, $data);
+        $this->load->view($template, $data);
     }
 
 }
