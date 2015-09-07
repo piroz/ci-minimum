@@ -8,3 +8,12 @@ if (!function_exists('fm')) {
     }
 
 }
+
+if (!function_exists('he')) {
+
+    function he($name)
+    {
+        return strlen(form_error($name)) > 0;
+    }
+
+}
